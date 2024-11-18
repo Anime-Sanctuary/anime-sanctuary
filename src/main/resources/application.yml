@@ -33,8 +33,8 @@ spring:
       client:
         registration:
           google:
-            client-id: temporarilycensored
-            client-secret: temporarilycensored
+            client-id: 271406145812-a4ul6gjtrlbsm61hgmua0ug0jgqf2a89.apps.googleusercontent.com
+            client-secret: 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
             scope: profile, email
             redirect-uri: "{baseUrl}/login/oauth2/code/google"
             client-name: Google
