@@ -3,12 +3,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-mysql
-    container_name: mysql
+    container_name: dc-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: AnimeDB
+      MYSQL_DATABASE: testing
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - app-network
 
@@ -18,7 +18,7 @@ services:
       dockerfile: Dockerfile-openjdk
     container_name: spring-boot
     ports:
-      - "9000:9000"
+      - "8999:9000"
     depends_on:
       - mysql
     networks:

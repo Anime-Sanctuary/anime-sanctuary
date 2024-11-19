@@ -1,9 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://dc-mysql:3306/userservice
+    url: jdbc:mysql://dc-mysql:3306/testing
+    # Hide this before deploying on AWS!
     username: root
-    password: 1234
+    password: root
 
   jpa:
     hibernate:
