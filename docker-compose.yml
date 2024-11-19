@@ -1,0 +1,40 @@
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: AnimeDB
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+  spring-boot:
+    build:
+      context: .
+      dockerfile: Dockerfile-openjdk
+    container_name: spring-boot
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+      
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - spring-boot
+    networks:
+      - app-network
+
+networks:
+  app-network:

@@ -1,0 +1,21 @@
+# 기본 이미지 지정
+FROM openjdk:17-slim
+
+# 패키지 업데이트 및 ssh 설치
+RUN apt update -y && apt install openssh-server -y
+
+# /webservice 디렉토리 생성
+RUN mkdir -p /webservice/logs
+
+# 작업 디렉토리 변경
+WORKDIR /webservice
+
+# /webservice 디렉토리에 application-real.yml, start.sh 파일 복사
+ADD application-real.yml /webservice
+ADD start.sh /webservice
+
+# entrypoint 명령어 복사
+ADD entrypoint.sh /root
+
+# 컨테이너 생성 시 시작 명령어 지정
+ENTRYPOINT sh /root/entrypoint.sh

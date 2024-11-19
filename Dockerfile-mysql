@@ -1,0 +1,6 @@
+# 기본 이미지 지정
+FROM mysql:9
+
+# 문자 인코딩 지정
+ARG character-set-server=utf8mb4
+ARG collation-server=utf8mb4_unicode_ci
